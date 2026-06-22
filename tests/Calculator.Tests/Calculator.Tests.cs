@@ -24,7 +24,7 @@ public class UnitTest1
     [Fact]
     public void Calculator_divide_twoIntsNotZero()
     {
-        //Assemble
+        //Arrange
         var calculator = new Calculator();
         var faker = new Faker();
 
@@ -45,7 +45,7 @@ public class UnitTest1
     [Fact]
     public void Calculator_divide_anIntByZero()
     {
-        //Assemble
+        //Arrange
         var calculator = new Calculator();
         var faker = new Faker();
 
@@ -53,9 +53,9 @@ public class UnitTest1
         int b = 0;
 
         //Act
-        int quotient = calculator.Divide(a, b);
-
         //Assert
-        Assert.Equal(a / b, quotient);
+        Assert.Throws<DivideByZeroException>(
+            () => calculator.Divide(a, b)
+        );
     }
 }
